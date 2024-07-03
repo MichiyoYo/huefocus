@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Time } from '../../types';
-import { Heading, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 import { ModeContext } from '../Layout/components/Main';
 
 interface TimerProps {
@@ -35,20 +35,25 @@ export const Timer = ({
 
   return (
     <div>
-      <Heading>
-        <Text fontSize='6xl' color='white' my={5}>
-          {mode === 'focus' &&
-            `${timePad(focusTimer.minutes)}:${timePad(focusTimer.seconds)}`}
-          {mode === 'short-break' &&
-            `${timePad(shortBreakTimer.minutes)}:${timePad(
-              shortBreakTimer.seconds
-            )}`}
-          {mode === 'long-break' &&
-            `${timePad(longBreakTimer.minutes)}:${timePad(
-              longBreakTimer.seconds
-            )}`}
-        </Text>
-      </Heading>
+      <Text
+        size='6xl'
+        fontSize='8rem'
+        fontFamily={'Russo One'}
+        noOfLines={1}
+        color='white'
+        my={5}
+      >
+        {mode === 'focus' &&
+          `${timePad(focusTimer.minutes)}:${timePad(focusTimer.seconds)}`}
+        {mode === 'short-break' &&
+          `${timePad(shortBreakTimer.minutes)}:${timePad(
+            shortBreakTimer.seconds
+          )}`}
+        {mode === 'long-break' &&
+          `${timePad(longBreakTimer.minutes)}:${timePad(
+            longBreakTimer.seconds
+          )}`}
+      </Text>
     </div>
   );
 };
