@@ -13,7 +13,7 @@ export const SetButtons = () => {
   };
 
   return (
-    <Stack spacing={4} direction='row' align='center'>
+    <Stack direction='row' align='center' justify='space-between' wrap='wrap'>
       <Button
         variant='solid'
         colorScheme='whiteAlpha'

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { createContext, useState } from 'react';
 import { SetButtons } from '../../SetButtons';
 import { Timer } from '../../Timer';
+import { GoalInput } from '../../GoalInput';
+import { Box } from '@chakra-ui/react';
 
 const MainContainer = styled.main`
   flex: 3 1 auto;
@@ -26,8 +28,18 @@ const Main = () => {
   return (
     <MainContainer>
       <ModeContext.Provider value={{ mode, setMode }}>
-        <SetButtons />
-        <Timer />
+        <Box
+          maxW='lg'
+          minW='sm'
+          display='flex'
+          flexDirection='column'
+          gap={5}
+          alignItems='center'
+        >
+          <GoalInput />
+          <SetButtons />
+          <Timer />
+        </Box>
       </ModeContext.Provider>
     </MainContainer>
   );

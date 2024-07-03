@@ -1,7 +1,10 @@
 import { useContext, useState } from 'react';
 import { Time } from '../../types';
-import { Text } from '@chakra-ui/react';
+import { Input, Text } from '@chakra-ui/react';
 import { ModeContext } from '../Layout/components/Main';
+import { EditTimer } from './components/EditTimer';
+import { DisplayTimer } from './ViewTimer';
+import { timePad } from '../../utils';
 
 interface TimerProps {
   focusDuration?: Time;
@@ -28,32 +31,22 @@ export const Timer = ({
   const [shortBreakTimer, setShortBreakTimer] = useState(shortBreakDuration);
   const [longBreakTimer, setLongBreakTimer] = useState(longBreakDuration);
 
-  const timePad = (time: number) => {
-    const timeString = time.toString();
-    return timeString.length < 2 ? timeString.padStart(2, '0') : timeString;
-  };
-
   return (
-    <div>
-      <Text
-        size='6xl'
-        fontSize='8rem'
-        fontFamily={'Russo One'}
-        noOfLines={1}
-        color='white'
-        my={5}
-      >
-        {mode === 'focus' &&
-          `${timePad(focusTimer.minutes)}:${timePad(focusTimer.seconds)}`}
-        {mode === 'short-break' &&
-          `${timePad(shortBreakTimer.minutes)}:${timePad(
-            shortBreakTimer.seconds
-          )}`}
-        {mode === 'long-break' &&
-          `${timePad(longBreakTimer.minutes)}:${timePad(
-            longBreakTimer.seconds
-          )}`}
-      </Text>
-    </div>
+    <Text
+      size='6xl'
+      fontSize='8rem'
+      fontFamily={'Russo One'}
+      noOfLines={1}
+      color='white'
+    >
+      {mode === 'focus' &&
+        `${timePad(focusTimer.minutes)}:${timePad(focusTimer.seconds)}`}
+      {mode === 'short-break' &&
+        `${timePad(shortBreakTimer.minutes)}:${timePad(
+          shortBreakTimer.seconds
+        )}`}
+      {mode === 'long-break' &&
+        `${timePad(longBreakTimer.minutes)}:${timePad(longBreakTimer.seconds)}`}
+    </Text>
   );
 };
