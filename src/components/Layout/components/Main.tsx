@@ -5,6 +5,7 @@ import { SetButtons } from '../../SetButtons';
 import { Timer } from '../../Timer';
 import { GoalInput } from '../../GoalInput';
 import { Box } from '@chakra-ui/react';
+import { ActionButtons } from '../../ActionButtons';
 
 const MainContainer = styled.main`
   flex: 3 1 auto;
@@ -39,6 +40,7 @@ const Main = () => {
           <GoalInput />
           <SetButtons />
           <Timer />
+          <ActionButtons />
         </Box>
       </ModeContext.Provider>
     </MainContainer>
