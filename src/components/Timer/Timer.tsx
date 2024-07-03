@@ -1,35 +1,14 @@
-import { useContext, useState } from 'react';
-import { Time } from '../../types';
-import { Input, Text } from '@chakra-ui/react';
-import { ModeContext } from '../Layout/components/Main';
-import { EditTimer } from './components/EditTimer';
-import { DisplayTimer } from './ViewTimer';
+import { Text } from '@chakra-ui/react';
+import { Timer as TimerType } from '../../types';
 import { timePad } from '../../utils';
+import { useState } from 'react';
 
 interface TimerProps {
-  focusDuration?: Time;
-  shortBreakDuration?: Time;
-  longBreakDuration?: Time;
+  timer: TimerType;
 }
 
-export const Timer = ({
-  focusDuration = {
-    minutes: 25,
-    seconds: 0,
-  },
-  shortBreakDuration = {
-    minutes: 5,
-    seconds: 0,
-  },
-  longBreakDuration = {
-    minutes: 10,
-    seconds: 0,
-  },
-}: TimerProps) => {
-  const { mode } = useContext(ModeContext);
-  const [focusTimer, setFocusTimer] = useState(focusDuration);
-  const [shortBreakTimer, setShortBreakTimer] = useState(shortBreakDuration);
-  const [longBreakTimer, setLongBreakTimer] = useState(longBreakDuration);
+export const Timer = ({ timer }: TimerProps) => {
+  const { isRunning, timeCap, type } = timer;
 
   return (
     <Text
@@ -39,14 +18,13 @@ export const Timer = ({
       noOfLines={1}
       color='white'
     >
-      {mode === 'focus' &&
-        `${timePad(focusTimer.minutes)}:${timePad(focusTimer.seconds)}`}
-      {mode === 'short-break' &&
-        `${timePad(shortBreakTimer.minutes)}:${timePad(
-          shortBreakTimer.seconds
-        )}`}
-      {mode === 'long-break' &&
-        `${timePad(longBreakTimer.minutes)}:${timePad(longBreakTimer.seconds)}`}
+      {!isRunning
+        ? `${timePad(timeCap.minutes)}:${timePad(timeCap.seconds)}`
+        : type === 'focus'
+        ? 'Focus'
+        : type === 'shortBreak'
+        ? 'Short Break'
+        : 'Long Break'}
     </Text>
   );
 };

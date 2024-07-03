@@ -1,12 +1,23 @@
 import { Button, HStack } from '@chakra-ui/react';
-import { LuRewind, LuPlay } from 'react-icons/lu';
+import { LuRewind, LuPlay, LuPause } from 'react-icons/lu';
+import { Timer } from '../../types';
 
 interface Props {
-  handleStart: () => void;
-  handleReset: () => void;
+  timer: Timer;
+  setTimer: React.Dispatch<React.SetStateAction<Timer>>;
 }
 
-export const ActionButtons = ({ handleStart, handleReset }: Props) => {
+export const ActionButtons = ({ timer, setTimer }: Props) => {
+  const handleStart = () => {
+    if (timer.isRunning) {
+      setTimer((prev) => ({ ...prev, isRunning: false }));
+    } else {
+      setTimer((prev) => ({ ...prev, isRunning: true }));
+    }
+  };
+
+  const handleReset = () => setTimer({ ...timer, isRunning: false });
+
   return (
     <HStack spacing='24px'>
       <Button
@@ -14,9 +25,9 @@ export const ActionButtons = ({ handleStart, handleReset }: Props) => {
         colorScheme='whiteAlpha'
         size='md'
         onClick={handleStart}
-        leftIcon={<LuPlay />}
+        leftIcon={timer?.isRunning ? <LuPause /> : <LuPlay />}
       >
-        Start
+        {timer.isRunning ? 'Pause' : 'Start'}
       </Button>
       <Button
         variant='solid'

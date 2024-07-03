@@ -1,15 +1,10 @@
 import { Stack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
-import { useContext } from 'react';
-import { ModeContext } from '../Layout/components/Main';
 
 export const SetButtons = () => {
-  const { setMode } = useContext(ModeContext);
-
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     console.log(id);
-    setMode(id);
   };
 
   return (
