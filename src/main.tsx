@@ -5,8 +5,8 @@ import './index.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 import '@fontsource-variable/pixelify-sans';
-import '@fontsource/russo-one';
 import '@fontsource/play';
+import '@fontsource-variable/martian-mono';
 
 const theme = extendTheme({
   fonts: {

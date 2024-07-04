@@ -13,6 +13,8 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fontsource-variable/kode-mono": "^5.0.3",
+    "@fontsource-variable/martian-mono": "^5.0.13",
     "@fontsource-variable/pixelify-sans": "^5.0.3",
     "@fontsource/open-sans": "^5.0.28",
     "@fontsource/play": "^5.0.20",

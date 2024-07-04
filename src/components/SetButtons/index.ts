@@ -1,1 +1,1 @@
-export { SetButtons } from './SetButtons';
+export { ModeButtons } from './ModeButtons';

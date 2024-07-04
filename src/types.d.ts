@@ -5,6 +5,8 @@ export interface Time {
 
 export interface Timer {
   isRunning: boolean;
-  type: 'focus' | 'shortBreak' | 'longBreak';
-  timeCap?: Time;
+  type: Mode;
+  timeCap: Time;
 }
+
+export type Mode = 'focus' | 'shortBreak' | 'longBreak';

@@ -1,10 +1,22 @@
 import { Stack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
+import { Mode, Time, Timer } from '../../types';
+import { getDefaultTimer } from '../../utils';
 
-export const SetButtons = () => {
+interface Props {
+  mode: Mode;
+  setMode: React.Dispatch<React.SetStateAction<Mode>>;
+  setTimer: React.Dispatch<React.SetStateAction<Timer>>;
+  setTime: React.Dispatch<React.SetStateAction<Time>>;
+}
+
+export const ModeButtons = ({ mode, setMode, setTimer, setTime }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
-    console.log(id);
+    setMode(id as Mode);
+    const timer = getDefaultTimer(id as Mode);
+    setTimer(timer);
+    setTime(timer.timeCap);
   };
 
   return (
@@ -15,6 +27,7 @@ export const SetButtons = () => {
         size='md'
         onClick={handleClick}
         id='focus'
+        isActive={mode === 'focus'}
       >
         Focus
       </Button>
@@ -23,7 +36,8 @@ export const SetButtons = () => {
         colorScheme='whiteAlpha'
         size='md'
         onClick={handleClick}
-        id='short-break'
+        id='shortBreak'
+        isActive={mode === 'shortBreak'}
       >
         Short Break
       </Button>
@@ -32,7 +46,8 @@ export const SetButtons = () => {
         colorScheme='whiteAlpha'
         size='md'
         onClick={handleClick}
-        id='long-break'
+        id='longBreak'
+        isActive={mode === 'longBreak'}
       >
         Long Break
       </Button>
