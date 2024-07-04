@@ -32,7 +32,7 @@ export const Timer = ({ timer, time, setTime }: Props) => {
   return (
     <Text
       size='6xl'
-      fontSize='8rem'
+      fontSize={['6rem', '8rem', '10rem']}
       fontFamily={'Martian Mono Variable'}
       noOfLines={1}
       color='white'
