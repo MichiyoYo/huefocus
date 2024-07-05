@@ -30,6 +30,8 @@ export const Pomodoro = () => {
     pauseTimer: () => dispatch({ type: actions.PAUSE_TIMER, payload: null }),
     resetTimer: () => dispatch({ type: actions.RESET_TIMER, payload: null }),
     tick: () => dispatch({ type: actions.TICK, payload: null }),
+    setCountdown: (time: { minutes: number; seconds: number }) =>
+      dispatch({ type: actions.SET_COUNTDOWN, payload: time }),
   };
 
   return (
@@ -44,8 +46,8 @@ export const Pomodoro = () => {
       >
         <GoalInput />
         <ModeButtons />
-        {/* <Timer />
-        <ActionButtons /> */}
+        <Timer />
+        {/* <ActionButtons /> */}
       </Box>
     </PomodoroContext.Provider>
   );

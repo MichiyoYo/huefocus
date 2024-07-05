@@ -35,6 +35,14 @@ export const reducer = (state: StateType, action: ActionType) => {
           },
         },
       };
+    case actions.SET_COUNTDOWN:
+      return {
+        ...state,
+        timer: {
+          ...state.timer,
+          countDown: action.payload,
+        },
+      };
     default:
       return state;
   }

@@ -1,26 +1,24 @@
 import { Text } from '@chakra-ui/react';
-import { Time, Timer as TimerType } from '../../types';
 import { timePad } from '../../utils';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
+import { PomodoroContext } from '../Pomodoro';
 
-interface Props {
-  timer: TimerType;
-  time: Time;
-  setTime: React.Dispatch<React.SetStateAction<Time>>;
-}
-
-export const Timer = ({ timer, time, setTime }: Props) => {
-  const { isRunning, timeCap } = timer;
+export const Timer = () => {
+  const { timer, setCountdown } = useContext(PomodoroContext);
+  const { isRunning, timeCap, countDown } = timer;
 
   const handleTick = useCallback(() => {
-    if (time.minutes === 0 && time.seconds === 0) {
-      setTime(timeCap);
-    } else if (time.seconds === 0) {
-      setTime({ minutes: time.minutes - 1, seconds: 59 });
+    if (countDown.minutes === 0 && countDown.seconds === 0) {
+      setCountdown(timeCap);
+    } else if (countDown.seconds === 0) {
+      setCountdown({ minutes: countDown.minutes - 1, seconds: 59 });
     } else {
-      setTime({ minutes: time.minutes, seconds: time.seconds - 1 });
+      setCountdown({
+        minutes: countDown.minutes,
+        seconds: countDown.seconds - 1,
+      });
     }
-  }, [time, timeCap, setTime]);
+  }, [countDown, setCountdown, timeCap]);
 
   useEffect(() => {
     if (isRunning) {
@@ -37,7 +35,7 @@ export const Timer = ({ timer, time, setTime }: Props) => {
       noOfLines={1}
       color='white'
     >
-      {timePad(time.minutes)}:{timePad(time.seconds)}
+      {timePad(countDown.minutes)}:{timePad(countDown.seconds)}
     </Text>
   );
 };
