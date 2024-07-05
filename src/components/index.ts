@@ -1,3 +1,3 @@
 export { Timer } from './Timer';
-export { ModeButtons } from './SetButtons';
+export { ModeButtons } from './ModeButtons';
 export { GoalInput } from './GoalInput';

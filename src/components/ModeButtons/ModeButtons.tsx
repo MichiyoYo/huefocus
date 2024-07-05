@@ -1,22 +1,17 @@
 import { Stack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
-import { Mode, Time, Timer } from '../../types';
+import { Mode } from '../../types';
 import { getDefaultTimer } from '../../utils';
+import { useContext } from 'react';
+import { PomodoroContext } from '../Pomodoro';
 
-interface Props {
-  mode: Mode;
-  setMode: React.Dispatch<React.SetStateAction<Mode>>;
-  setTimer: React.Dispatch<React.SetStateAction<Timer>>;
-  setTime: React.Dispatch<React.SetStateAction<Time>>;
-}
-
-export const ModeButtons = ({ mode, setMode, setTimer, setTime }: Props) => {
+export const ModeButtons = () => {
+  const { setMode, setTimer, mode } = useContext(PomodoroContext);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setMode(id as Mode);
     const timer = getDefaultTimer(id as Mode);
     setTimer(timer);
-    setTime(timer.timeCap);
   };
 
   return (
