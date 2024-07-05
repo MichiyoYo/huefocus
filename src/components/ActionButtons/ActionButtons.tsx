@@ -1,24 +1,18 @@
 import { Button, HStack } from '@chakra-ui/react';
 import { LuRewind, LuPlay, LuPause } from 'react-icons/lu';
-import { Time, Timer } from '../../types';
-import { getDefaultTimer } from '../../utils';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
+import { PomodoroContext } from '../Pomodoro';
 
-interface Props {
-  timer: Timer;
-  setTimer: React.Dispatch<React.SetStateAction<Timer>>;
-  setTime: React.Dispatch<React.SetStateAction<Time>>;
-}
+export const ActionButtons = () => {
+  const { timer, setTimer, resetTimer } = useContext(PomodoroContext);
 
-export const ActionButtons = ({ timer, setTimer, setTime }: Props) => {
-  const handleStart = () => {
-    setTimer((prev) => ({ ...prev, isRunning: !prev.isRunning }));
-  };
-
-  const handleReset = useCallback(() => {
-    setTimer(getDefaultTimer(timer.type));
-    setTime(timer.timeCap);
-  }, [timer, setTimer, setTime]);
+  const handleStart = useCallback(() => {
+    if (timer.isRunning) {
+      setTimer({ ...timer, isRunning: false });
+    } else {
+      setTimer({ ...timer, isRunning: true });
+    }
+  }, [setTimer, timer]);
 
   return (
     <HStack spacing='24px'>
@@ -35,7 +29,7 @@ export const ActionButtons = ({ timer, setTimer, setTime }: Props) => {
         variant='solid'
         colorScheme='whiteAlpha'
         size='md'
-        onClick={handleReset}
+        onClick={resetTimer}
         leftIcon={<LuRewind />}
       >
         Rewind
