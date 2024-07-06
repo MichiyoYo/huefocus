@@ -2,6 +2,7 @@ import { Text } from '@chakra-ui/react';
 import {
   getDefaultTimer,
   getNextMode,
+  getUpdatedCountdown,
   isTimerExpired,
   timePad,
 } from '../../utils';
@@ -20,20 +21,25 @@ export const Timer = () => {
     setTimer,
     startTimer,
     resetRound,
+    autoPlay,
+    resetTimer,
   } = useContext(PomodoroContext);
   const { isRunning, countDown, mode } = timer;
   const [playEndOfRound] = useSound(ding, { volume: 0.25 });
 
   const handleTick = useCallback(() => {
+    if (!isTimerExpired(timer)) {
+      getUpdatedCountdown(countDown, setCountdown);
+    } else {
+      playEndOfRound();
+      resetTimer();
+    }
+  }, [timer, countDown, setCountdown, resetTimer, playEndOfRound]);
+
+  const handleAutoplay = useCallback(() => {
     if (round <= TOTAL_ROUNDS) {
       if (!isTimerExpired(timer)) {
-        if (countDown.seconds === 0)
-          setCountdown({ minutes: countDown.minutes - 1, seconds: 59 });
-        else
-          setCountdown({
-            minutes: countDown.minutes,
-            seconds: countDown.seconds - 1,
-          });
+        getUpdatedCountdown(countDown, setCountdown);
       } else {
         playEndOfRound();
         incrementRound();
@@ -60,7 +66,10 @@ export const Timer = () => {
 
   useEffect(() => {
     if (isRunning) {
-      const interval = setInterval(handleTick, 1000);
+      const interval = setInterval(
+        autoPlay ? handleAutoplay : handleTick,
+        1000
+      );
       return () => clearInterval(interval);
     }
   }, [isRunning, handleTick]);

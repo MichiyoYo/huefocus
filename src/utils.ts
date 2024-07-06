@@ -4,7 +4,7 @@ import {
   SHORT_BREAK_TIMER,
   TOTAL_ROUNDS,
 } from './constants';
-import { Mode, Round, Timer } from './types';
+import { Mode, Round, Time, Timer } from './types';
 
 export const timePad = (time: number) => {
   const timeString = time.toString();
@@ -32,4 +32,17 @@ export const getNextMode = (currMode: Mode, round: Round) => {
   } else {
     return 'longBreak';
   }
+};
+
+export const getUpdatedCountdown = (
+  currTime: Time,
+  setCountdown: (time: Time) => Time
+) => {
+  if (currTime.seconds === 0)
+    setCountdown({ minutes: currTime.minutes - 1, seconds: 59 });
+  else
+    setCountdown({
+      minutes: currTime.minutes,
+      seconds: currTime.seconds - 1,
+    });
 };
