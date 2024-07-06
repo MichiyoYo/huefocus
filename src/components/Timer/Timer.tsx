@@ -8,11 +8,14 @@ import {
 import { useCallback, useContext, useEffect } from 'react';
 import { PomodoroContext } from '../Pomodoro';
 import { FOCUS_TIMER, TOTAL_ROUNDS } from '../../constants';
+import { useSound } from 'use-sound';
+import ding from '../../assets/round.mp3';
 
 export const Timer = () => {
   const { timer, round, setCountdown, incrementRound, setTimer, startTimer } =
     useContext(PomodoroContext);
   const { isRunning, countDown, mode } = timer;
+  const [playEndOfRound] = useSound(ding, { volume: 0.25 });
 
   const handleTick = useCallback(() => {
     if (timer && round <= TOTAL_ROUNDS) {
@@ -25,6 +28,7 @@ export const Timer = () => {
             seconds: countDown.seconds - 1,
           });
       } else {
+        playEndOfRound();
         incrementRound();
         const nextMode = getNextMode(mode, round + 1);
         setTimer(getDefaultTimer(nextMode));
@@ -42,6 +46,7 @@ export const Timer = () => {
     mode,
     setTimer,
     startTimer,
+    playEndOfRound,
   ]);
 
   useEffect(() => {
