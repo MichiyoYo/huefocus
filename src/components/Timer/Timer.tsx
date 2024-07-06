@@ -72,13 +72,14 @@ export const Timer = () => {
       );
       return () => clearInterval(interval);
     }
-  }, [isRunning, handleTick]);
+  }, [isRunning, handleTick, autoPlay, handleAutoplay]);
 
   return (
     <Text
       size='6xl'
       fontSize={['6rem', '8rem', '10rem']}
       fontFamily={'Martian Mono Variable'}
+      fontWeight={'semibold'}
       noOfLines={1}
       color='white'
     >

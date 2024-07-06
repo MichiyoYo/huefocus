@@ -56,7 +56,7 @@ export const ActionButtons = () => {
         isActive={autoPlay}
         leftIcon={<MdAutoAwesome />}
       >
-        Auto-Play
+        {autoPlay ? 'Auto-play On' : 'Auto-play Off'}
       </Button>
     </HStack>
   );

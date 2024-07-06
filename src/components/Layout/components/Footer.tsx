@@ -1,3 +1,4 @@
+import { Text } from '@chakra-ui/react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.div`
@@ -7,14 +8,15 @@ const FooterContainer = styled.div`
   align-items: center;
 `;
 
-const Copyright = styled.div`
-  font-size: 12px;
-`;
-
 const Footer = () => {
   return (
     <FooterContainer>
-      <Copyright>Cristina Lester &copy; 2024</Copyright>
+      <Text fontSize={'xs'}>
+        <a href='https://cristinalester.rocks' target='_blank'>
+          Cristina Lester
+        </a>{' '}
+        &copy; 2024
+      </Text>
     </FooterContainer>
   );
 };
