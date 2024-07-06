@@ -48,6 +48,15 @@ const theme = extendTheme({
       },
     },
   },
+  components: {
+    Drawer: {
+      baseStyle: {
+        overlay: {
+          bg: 'blackAlpha.100',
+        },
+      },
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
