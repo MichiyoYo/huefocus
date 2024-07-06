@@ -19,6 +19,7 @@ export const Pomodoro = () => {
     timer: state.timer,
     mode: state.mode,
     round: state.round,
+    autoPlay: state.autoPlay,
     incrementRound: () =>
       dispatch({ type: actions.INCREMENT_ROUND, payload: null }),
     resetRound: () => dispatch({ type: actions.RESET_ROUND, payload: null }),
@@ -31,6 +32,10 @@ export const Pomodoro = () => {
       dispatch({ type: actions.SET_COUNTDOWN, payload: time }),
     startTimer: () => dispatch({ type: actions.START_TIMER, payload: null }),
     stopTimer: () => dispatch({ type: actions.STOP_TIMER, payload: null }),
+    enableAutoplay: () =>
+      dispatch({ type: actions.ENABLE_AUTOPLAY, payload: null }),
+    disableAutoplay: () =>
+      dispatch({ type: actions.DISABLE_AUTOPLAY, payload: null }),
   };
 
   return (

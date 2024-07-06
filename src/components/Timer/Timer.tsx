@@ -12,13 +12,20 @@ import { useSound } from 'use-sound';
 import ding from '../../assets/round.mp3';
 
 export const Timer = () => {
-  const { timer, round, setCountdown, incrementRound, setTimer, startTimer } =
-    useContext(PomodoroContext);
+  const {
+    timer,
+    round,
+    setCountdown,
+    incrementRound,
+    setTimer,
+    startTimer,
+    resetRound,
+  } = useContext(PomodoroContext);
   const { isRunning, countDown, mode } = timer;
   const [playEndOfRound] = useSound(ding, { volume: 0.25 });
 
   const handleTick = useCallback(() => {
-    if (timer && round <= TOTAL_ROUNDS) {
+    if (round <= TOTAL_ROUNDS) {
       if (!isTimerExpired(timer)) {
         if (countDown.seconds === 0)
           setCountdown({ minutes: countDown.minutes - 1, seconds: 59 });
@@ -36,6 +43,7 @@ export const Timer = () => {
       }
     } else {
       setTimer(FOCUS_TIMER);
+      resetRound();
     }
   }, [
     countDown,
@@ -47,6 +55,7 @@ export const Timer = () => {
     setTimer,
     startTimer,
     playEndOfRound,
+    resetRound,
   ]);
 
   useEffect(() => {

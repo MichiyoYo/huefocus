@@ -8,9 +8,12 @@ export const RESET_TIMER = 'RESET_TIMER';
 export const SET_COUNTDOWN = 'SET_COUNTDOWN';
 export const START_TIMER = 'START_TIMER';
 export const STOP_TIMER = 'STOP_TIMER';
+export const ENABLE_AUTOPLAY = 'ENABLE_AUTOPLAY';
+export const DISABLE_AUTOPLAY = 'DISABLE_AUTOPLAY';
 
 export const initialState = {
   timer: FOCUS_TIMER,
   mode: 'focus',
   round: 1,
+  autoPlay: false,
 };

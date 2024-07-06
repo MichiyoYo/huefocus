@@ -1,4 +1,5 @@
-import { Stack } from '@chakra-ui/react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { HStack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 import { Mode } from '../../types';
 import { getDefaultTimer } from '../../utils';
@@ -21,7 +22,7 @@ export const ModeButtons = () => {
   }, [timer]);
 
   return (
-    <Stack direction='row' align='center' justify='space-between' wrap='wrap'>
+    <HStack direction='row' align='center' spacing='5' wrap='wrap'>
       <Button
         variant='solid'
         colorScheme='whiteAlpha'
@@ -52,6 +53,6 @@ export const ModeButtons = () => {
       >
         Long Break
       </Button>
-    </Stack>
+    </HStack>
   );
 };

@@ -1,8 +1,8 @@
 import { Timer } from './types';
 
 const FOCUS_TIMECAP = { minutes: 0, seconds: 3 };
-const SHORT_BREAK_TIMECAP = { minutes: 5, seconds: 0 };
-const LONG_BREAK_TIMECAP = { minutes: 10, seconds: 0 };
+const SHORT_BREAK_TIMECAP = { minutes: 0, seconds: 3 };
+const LONG_BREAK_TIMECAP = { minutes: 0, seconds: 3 };
 
 export const FOCUS_TIMER: Timer = {
   isRunning: false,

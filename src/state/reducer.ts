@@ -32,6 +32,16 @@ export const reducer = (state: StateType, action: ActionType) => {
           countDown: action.payload,
         },
       };
+    case actions.ENABLE_AUTOPLAY:
+      return {
+        ...state,
+        autoPlay: true,
+      };
+    case actions.DISABLE_AUTOPLAY:
+      return {
+        ...state,
+        autoPlay: false,
+      };
     default:
       return state;
   }
