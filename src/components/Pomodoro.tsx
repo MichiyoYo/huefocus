@@ -26,9 +26,10 @@ export const Pomodoro = () => {
       dispatch({ type: actions.SET_MODE, payload: mode }),
     setTimer: (timer: TimerType) =>
       dispatch({ type: actions.SET_TIMER, payload: timer }),
-    resetTimer: () => dispatch({ type: actions.RESET_TIMER, payload: null }),
     setCountdown: (time: { minutes: number; seconds: number }) =>
       dispatch({ type: actions.SET_COUNTDOWN, payload: time }),
+    startTimer: () => dispatch({ type: actions.START_TIMER, payload: null }),
+    stopTimer: () => dispatch({ type: actions.STOP_TIMER, payload: null }),
   };
 
   return (

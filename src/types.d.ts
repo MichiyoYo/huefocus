@@ -5,11 +5,11 @@ export interface Time {
 
 export interface Timer {
   isRunning: boolean;
-  type: Mode;
+  mode: Mode;
   timeCap: Time;
   countDown: Time;
 }
 
 export type Mode = 'focus' | 'shortBreak' | 'longBreak';
 
-export type Round = 1 | 2 | 3 | 4;
+export type Round = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;

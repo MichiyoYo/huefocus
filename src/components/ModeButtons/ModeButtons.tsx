@@ -2,17 +2,23 @@ import { Stack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 import { Mode } from '../../types';
 import { getDefaultTimer } from '../../utils';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PomodoroContext } from '../Pomodoro';
 
 export const ModeButtons = () => {
-  const { setMode, setTimer, mode } = useContext(PomodoroContext);
+  const { timer, setMode, setTimer, mode } = useContext(PomodoroContext);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setMode(id as Mode);
     const timer = getDefaultTimer(id as Mode);
     setTimer(timer);
   };
+
+  useEffect(() => {
+    if (timer && setMode) {
+      setMode(timer.mode);
+    }
+  }, [timer]);
 
   return (
     <Stack direction='row' align='center' justify='space-between' wrap='wrap'>

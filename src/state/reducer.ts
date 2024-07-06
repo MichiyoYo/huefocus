@@ -11,15 +11,11 @@ export const reducer = (state: StateType, action: ActionType) => {
       return { ...state, mode: action.payload };
     case actions.SET_TIMER:
       return { ...state, timer: action.payload };
-    case actions.RESET_TIMER:
-      return {
-        ...state,
-        timer: {
-          ...state.timer,
-          isRunning: false,
-          countDown: state.timer.timeCap,
-        },
-      };
+
+    case actions.START_TIMER:
+      return { ...state, timer: { ...state.timer, isRunning: true } };
+    case actions.STOP_TIMER:
+      return { ...state, timer: { ...state.timer, isRunning: false } };
     case actions.SET_COUNTDOWN:
       return {
         ...state,

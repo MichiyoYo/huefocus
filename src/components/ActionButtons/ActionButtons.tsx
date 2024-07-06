@@ -4,15 +4,16 @@ import { useCallback, useContext } from 'react';
 import { PomodoroContext } from '../Pomodoro';
 
 export const ActionButtons = () => {
-  const { timer, setTimer, resetTimer } = useContext(PomodoroContext);
+  const { timer, startTimer, stopTimer, resetTimer } =
+    useContext(PomodoroContext);
 
   const handleStart = useCallback(() => {
     if (timer.isRunning) {
-      setTimer({ ...timer, isRunning: false });
+      stopTimer();
     } else {
-      setTimer({ ...timer, isRunning: true });
+      startTimer();
     }
-  }, [setTimer, timer]);
+  }, [startTimer, stopTimer, timer]);
 
   return (
     <HStack spacing='24px'>

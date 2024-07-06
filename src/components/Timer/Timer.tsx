@@ -1,24 +1,48 @@
 import { Text } from '@chakra-ui/react';
-import { timePad } from '../../utils';
+import {
+  getDefaultTimer,
+  getNextMode,
+  isTimerExpired,
+  timePad,
+} from '../../utils';
 import { useCallback, useContext, useEffect } from 'react';
 import { PomodoroContext } from '../Pomodoro';
+import { FOCUS_TIMER, TOTAL_ROUNDS } from '../../constants';
 
 export const Timer = () => {
-  const { timer, setCountdown } = useContext(PomodoroContext);
-  const { isRunning, timeCap, countDown } = timer;
+  const { timer, round, setCountdown, incrementRound, setTimer, startTimer } =
+    useContext(PomodoroContext);
+  const { isRunning, countDown, mode } = timer;
 
   const handleTick = useCallback(() => {
-    if (countDown.minutes === 0 && countDown.seconds === 0) {
-      setCountdown(timeCap);
-    } else if (countDown.seconds === 0) {
-      setCountdown({ minutes: countDown.minutes - 1, seconds: 59 });
+    if (timer && round <= TOTAL_ROUNDS) {
+      if (!isTimerExpired(timer)) {
+        if (countDown.seconds === 0)
+          setCountdown({ minutes: countDown.minutes - 1, seconds: 59 });
+        else
+          setCountdown({
+            minutes: countDown.minutes,
+            seconds: countDown.seconds - 1,
+          });
+      } else {
+        incrementRound();
+        const nextMode = getNextMode(mode, round + 1);
+        setTimer(getDefaultTimer(nextMode));
+        startTimer();
+      }
     } else {
-      setCountdown({
-        minutes: countDown.minutes,
-        seconds: countDown.seconds - 1,
-      });
+      setTimer(FOCUS_TIMER);
     }
-  }, [countDown, setCountdown, timeCap]);
+  }, [
+    countDown,
+    setCountdown,
+    round,
+    incrementRound,
+    timer,
+    mode,
+    setTimer,
+    startTimer,
+  ]);
 
   useEffect(() => {
     if (isRunning) {
