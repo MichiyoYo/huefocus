@@ -31,17 +31,21 @@ export const Timer = () => {
     if (!isTimerExpired(timer)) {
       getUpdatedCountdown(countDown, setCountdown);
     } else {
-      playEndOfRound();
       resetTimer();
     }
-  }, [timer, countDown, setCountdown, resetTimer, playEndOfRound]);
+  }, [timer, countDown, setCountdown, resetTimer]);
+
+  useEffect(() => {
+    if (isTimerExpired(timer)) {
+      playEndOfRound();
+    }
+  }, [timer, playEndOfRound]);
 
   const handleAutoplay = useCallback(() => {
     if (round <= TOTAL_ROUNDS) {
       if (!isTimerExpired(timer)) {
         getUpdatedCountdown(countDown, setCountdown);
       } else {
-        playEndOfRound();
         incrementRound();
         const nextMode = getNextMode(mode, round + 1);
         setTimer(getDefaultTimer(nextMode));
@@ -60,7 +64,6 @@ export const Timer = () => {
     mode,
     setTimer,
     startTimer,
-    playEndOfRound,
     resetRound,
   ]);
 

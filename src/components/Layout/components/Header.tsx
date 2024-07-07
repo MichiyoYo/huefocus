@@ -29,6 +29,7 @@ const Header = () => {
             fontFamily={'Comfortaa Variable'}
             fontSize='3xl'
             colorScheme='white'
+            as='h1'
           >
             huefocus
           </Text>

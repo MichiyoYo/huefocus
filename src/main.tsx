@@ -52,7 +52,7 @@ const theme = extendTheme({
     Drawer: {
       baseStyle: {
         overlay: {
-          bg: 'blackAlpha.100',
+          bg: 'blackAlpha.400',
         },
       },
     },
