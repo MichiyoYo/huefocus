@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components';
 import LogoPNG from '../../../assets/logo.png';
-import { Box, IconButton, Text, useDisclosure } from '@chakra-ui/react';
-import { LuSettings } from 'react-icons/lu';
+import { Box, Button, IconButton, Text, useDisclosure } from '@chakra-ui/react';
+import { LuCoffee, LuHeart, LuSettings } from 'react-icons/lu';
 import { Settings } from '../../Settings';
 
 const HeaderContainer = styled.header`
@@ -19,6 +20,9 @@ const LogoImg = styled.img`
 
 const Header = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const goToPage = () => {
+    window.open('https://buymeacoffee.com/creechan', '_blank');
+  };
   return (
     <>
       <HeaderContainer>
@@ -34,8 +38,8 @@ const Header = () => {
             huefocus
           </Text>
         </Box>
-        {/* <Box>
-          <IconButton
+        <Box>
+          {/* <IconButton
             fontSize='2xl'
             fontWeight='light'
             color='white'
@@ -43,8 +47,17 @@ const Header = () => {
             variant='link'
             icon={<LuSettings />}
             onClick={onOpen}
-          />
-        </Box> */}
+          /> */}
+          <Button
+            size='sm'
+            colorScheme='whiteAlpha'
+            variant='solid'
+            onClick={goToPage}
+            leftIcon={<LuCoffee />}
+          >
+            Buy me a coffee
+          </Button>
+        </Box>
       </HeaderContainer>
       <Settings isOpen={isOpen} onClose={onClose} />
     </>
