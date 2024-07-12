@@ -1,8 +1,9 @@
 import { Button, HStack } from '@chakra-ui/react';
-import { LuRewind, LuPlay, LuPause } from 'react-icons/lu';
+import { LuPlay, LuPause } from 'react-icons/lu';
 import { useCallback, useContext } from 'react';
-import { PomodoroContext } from '../Pomodoro';
 import { MdAutoAwesome } from 'react-icons/md';
+import { LuTimerReset } from 'react-icons/lu';
+import { PomodoroContext } from '../../App';
 
 export const ActionButtons = () => {
   const {
@@ -44,7 +45,7 @@ export const ActionButtons = () => {
         colorScheme='whiteAlpha'
         size='md'
         onClick={resetTimer}
-        leftIcon={<LuRewind />}
+        leftIcon={<LuTimerReset />}
       >
         Rewind
       </Button>

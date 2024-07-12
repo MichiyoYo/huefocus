@@ -34,7 +34,7 @@ const Header = () => {
             huefocus
           </Text>
         </Box>
-        <Box>
+        {/* <Box>
           <IconButton
             fontSize='2xl'
             fontWeight='light'
@@ -44,7 +44,7 @@ const Header = () => {
             icon={<LuSettings />}
             onClick={onOpen}
           />
-        </Box>
+        </Box> */}
       </HeaderContainer>
       <Settings isOpen={isOpen} onClose={onClose} />
     </>

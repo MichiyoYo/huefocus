@@ -11,7 +11,9 @@ export const timePad = (time: number) => {
   return timeString.length < 2 ? timeString.padStart(2, '0') : timeString;
 };
 
-export const getDefaultTimer = (type: 'focus' | 'shortBreak' | 'longBreak') => {
+export const getTimerDuration = (
+  type: 'focus' | 'shortBreak' | 'longBreak'
+) => {
   switch (type) {
     case 'focus':
       return FOCUS_TIMER;

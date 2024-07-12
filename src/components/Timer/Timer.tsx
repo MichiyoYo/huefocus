@@ -1,16 +1,16 @@
 import { Text } from '@chakra-ui/react';
 import {
-  getDefaultTimer,
+  getTimerDuration,
   getNextMode,
   getUpdatedCountdown,
   isTimerExpired,
   timePad,
 } from '../../utils';
 import { useCallback, useContext, useEffect } from 'react';
-import { PomodoroContext } from '../Pomodoro';
 import { FOCUS_TIMER, TOTAL_ROUNDS } from '../../constants';
 import { useSound } from 'use-sound';
 import ding from '../../assets/round.mp3';
+import { PomodoroContext } from '../../App';
 
 export const Timer = () => {
   const {
@@ -48,7 +48,7 @@ export const Timer = () => {
       } else {
         incrementRound();
         const nextMode = getNextMode(mode, round + 1);
-        setTimer(getDefaultTimer(nextMode));
+        setTimer(getTimerDuration(nextMode));
         startTimer();
       }
     } else {

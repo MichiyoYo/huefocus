@@ -2,16 +2,16 @@
 import { HStack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 import { Mode } from '../../types';
-import { getDefaultTimer } from '../../utils';
+import { getTimerDuration } from '../../utils';
 import { useContext, useEffect } from 'react';
-import { PomodoroContext } from '../Pomodoro';
+import { PomodoroContext } from '../../App';
 
 export const ModeButtons = () => {
   const { timer, setMode, setTimer, mode } = useContext(PomodoroContext);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
     setMode(id as Mode);
-    const timer = getDefaultTimer(id as Mode);
+    const timer = getTimerDuration(id as Mode);
     setTimer(timer);
   };
 

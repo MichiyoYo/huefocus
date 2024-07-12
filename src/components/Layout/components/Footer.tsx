@@ -1,14 +1,6 @@
-import { HStack, IconButton, Link, Text, VStack } from '@chakra-ui/react';
-import styled from 'styled-components';
+import { HStack, Link, Text, VStack } from '@chakra-ui/react';
 import { FaGithubAlt } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
-
-const FooterContainer = styled.div`
-  flex: 0 2 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Footer = () => {
   return (
