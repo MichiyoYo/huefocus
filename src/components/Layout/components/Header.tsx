@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components';
 import LogoPNG from '../../../assets/logo.png';
-import { Box, Button, IconButton, Text, useDisclosure } from '@chakra-ui/react';
-import { LuCoffee, LuHeart, LuSettings } from 'react-icons/lu';
+import { Box, Button, Text, useDisclosure } from '@chakra-ui/react';
+import { LuCoffee } from 'react-icons/lu';
 import { Settings } from '../../Settings';
 
 const HeaderContainer = styled.header`
@@ -19,7 +19,7 @@ const LogoImg = styled.img`
 `;
 
 const Header = () => {
-  const { onOpen, isOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   const goToPage = () => {
     window.open('https://buymeacoffee.com/creechan', '_blank');
   };
