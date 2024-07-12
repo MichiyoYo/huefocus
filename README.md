@@ -2,6 +2,8 @@
 
 ## Fabulous Pomodoro Timer
 
+<img src="./public/screenhot.png"/>
+
 This is a pomodoro timer to manage your productive work like a boss.
 
 ### Tech Stack
