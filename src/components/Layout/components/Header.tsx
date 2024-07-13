@@ -12,7 +12,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  @media screen and (max-width: 300px) {
+  @media screen and (max-width: 400px) {
     justify-content: center;
     gap: 1rem;
   }
