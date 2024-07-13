@@ -32,7 +32,7 @@ export const ActionButtons = () => {
     else enableAutoplay();
   }, [autoPlay, enableAutoplay, disableAutoplay]);
 
-  return vpWidth && vpWidth > 300 ? (
+  return vpWidth && vpWidth > 400 ? (
     <HStack spacing='5'>
       <Button
         variant='solid'

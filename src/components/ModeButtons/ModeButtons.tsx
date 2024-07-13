@@ -26,8 +26,8 @@ export const ModeButtons = () => {
 
   return (
     <Stack
-      direction={vpWidth < 300 ? 'column' : 'row'}
-      spacing={vpWidth <= 300 ? 2 : 5}
+      direction={vpWidth < 400 ? 'column' : 'row'}
+      spacing={vpWidth < 400 ? 2 : 5}
     >
       <Button
         variant='solid'
