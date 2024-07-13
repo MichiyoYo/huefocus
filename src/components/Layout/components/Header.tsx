@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components';
 import LogoPNG from '../../../assets/logo.png';
-import { Box, Button, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, Link, Text, useDisclosure } from '@chakra-ui/react';
 import { LuCoffee } from 'react-icons/lu';
 import { Settings } from '../../Settings';
 
@@ -40,7 +40,12 @@ const Header = () => {
             colorScheme='white'
             as='h1'
           >
-            huefocus
+            <Link
+              href='https://huefocus.app'
+              style={{ textDecoration: 'none' }}
+            >
+              huefocus
+            </Link>
           </Text>
         </Box>
         <Box>
