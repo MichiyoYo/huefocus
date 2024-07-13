@@ -42,6 +42,7 @@ const Header = () => {
           >
             <Link
               href='https://huefocus.app'
+              isExternal
               style={{ textDecoration: 'none' }}
             >
               huefocus
