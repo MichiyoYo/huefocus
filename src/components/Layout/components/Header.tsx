@@ -8,9 +8,14 @@ import { Settings } from '../../Settings';
 const HeaderContainer = styled.header`
   flex: 0 1 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  @media screen and (max-width: 300px) {
+    justify-content: center;
+    gap: 1rem;
+  }
 `;
 
 const LogoImg = styled.img`
@@ -50,8 +55,8 @@ const Header = () => {
           /> */}
           <Button
             size='sm'
-            colorScheme='whiteAlpha'
-            variant='solid'
+            colorScheme='white'
+            variant='outline'
             onClick={goToPage}
             leftIcon={<LuCoffee />}
           >

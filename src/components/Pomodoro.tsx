@@ -9,7 +9,7 @@ export const Pomodoro = () => {
   return (
     <Box
       maxW='lg'
-      minW='sm'
+      minW='xs'
       display='flex'
       flexDirection='column'
       gap={5}

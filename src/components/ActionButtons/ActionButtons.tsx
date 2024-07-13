@@ -1,9 +1,11 @@
-import { Button, HStack } from '@chakra-ui/react';
+import { Button, HStack, IconButton, Tooltip } from '@chakra-ui/react';
 import { LuPlay, LuPause } from 'react-icons/lu';
 import { useCallback, useContext } from 'react';
 import { MdAutoAwesome } from 'react-icons/md';
 import { LuTimerReset } from 'react-icons/lu';
 import { PomodoroContext } from '../../App';
+import { useViewport } from '../../hooks';
+import { FaPlay, FaPause } from 'react-icons/fa6';
 
 export const ActionButtons = () => {
   const {
@@ -15,6 +17,7 @@ export const ActionButtons = () => {
     stopTimer,
     resetTimer,
   } = useContext(PomodoroContext);
+  const { width: vpWidth } = useViewport();
 
   const handleStart = useCallback(() => {
     if (timer.isRunning) {
@@ -29,7 +32,7 @@ export const ActionButtons = () => {
     else enableAutoplay();
   }, [autoPlay, enableAutoplay, disableAutoplay]);
 
-  return (
+  return vpWidth && vpWidth > 300 ? (
     <HStack spacing='5'>
       <Button
         variant='solid'
@@ -59,6 +62,37 @@ export const ActionButtons = () => {
       >
         {autoPlay ? 'Auto-play On' : 'Auto-play Off'}
       </Button>
+    </HStack>
+  ) : (
+    <HStack spacing='2'>
+      <Tooltip label='Start/Pause'>
+        <IconButton
+          isRound
+          aria-label='Start/Pause'
+          colorScheme='whiteAlpha'
+          onClick={handleStart}
+          icon={timer?.isRunning ? <FaPause /> : <FaPlay />}
+        />
+      </Tooltip>
+      <Tooltip label='Rewind'>
+        <IconButton
+          isRound
+          aria-label='Start/Pause'
+          colorScheme='whiteAlpha'
+          onClick={resetTimer}
+          icon={<LuTimerReset />}
+        />
+      </Tooltip>
+      <Tooltip label='Autoplay'>
+        <IconButton
+          isRound
+          aria-label='Start/Pause'
+          colorScheme='whiteAlpha'
+          isActive={autoPlay}
+          onClick={toggleAutoplay}
+          icon={<MdAutoAwesome />}
+        />
+      </Tooltip>
     </HStack>
   );
 };

@@ -80,7 +80,7 @@ export const Timer = () => {
   return (
     <Text
       size='6xl'
-      fontSize={['6rem', '8rem', '10rem']}
+      fontSize={['3rem', '6rem', '8rem', '10rem']}
       fontFamily={'Martian Mono Variable'}
       fontWeight={'semibold'}
       noOfLines={1}
