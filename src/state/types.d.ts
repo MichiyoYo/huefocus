@@ -5,6 +5,8 @@ export interface StateType {
   autoPlay: boolean;
 }
 
+export type DispatchType = (action: ActionType) => void;
+
 export interface ActionType {
   type: string;
   payload: PayloadType;

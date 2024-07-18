@@ -15,5 +15,5 @@ export const initialState = {
   timer: FOCUS_TIMER,
   mode: 'focus',
   round: 1,
-  autoPlay: false,
+  autoPlay: true,
 };
