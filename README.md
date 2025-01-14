@@ -27,3 +27,7 @@ This is a pomodoro timer to manage your productive work like a boss.
 `npm run dev`
 
 This will usually start the server at http://localhost:5173/ (or another port if specified in the project configuration).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
